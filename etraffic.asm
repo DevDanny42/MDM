@@ -1,0 +1,36 @@
+ORG 0000H
+
+START:
+
+BACK:
+
+; RED ON
+MOV P1, #01H
+ACALL DELAY
+
+; YELLOW ON
+MOV P1, #02H
+ACALL DELAY
+
+; GREEN ON
+MOV P1, #04H
+ACALL DELAY
+
+SJMP BACK
+
+; -------------------
+; Delay Subroutine
+; -------------------
+
+DELAY:
+    MOV R0, #08H
+
+LOOP2:
+    MOV R1, #0FFH
+
+LOOP1:
+    DJNZ R1, LOOP1
+    DJNZ R0, LOOP2
+    RET
+
+END
